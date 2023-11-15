@@ -1,11 +1,9 @@
 import 'package:pizza_maker/pizza.dart';
 
 class Margarita extends Pizza {
+  Margarita(String size) : super(size, _calPrice(size));
 
-  Margarita(String size) : super(size, calPrice(size), 'Margarita');
-
-
-  static double calPrice(String size) {
+  static double _calPrice(String size) {
     // weather size is S, M, L
     switch (size) {
       case 's':
@@ -19,5 +17,9 @@ class Margarita extends Pizza {
     }
   }
 
-
+  @override
+  void printPizza() {
+    print('Margarita lovers');
+    // super.printPizza();
+  }
 }

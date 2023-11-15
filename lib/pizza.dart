@@ -1,16 +1,41 @@
 abstract class Pizza {
-  double price;
-  String size;
-  String name;
+  final double _price;
+  String _size;
 
-  Pizza(this.size, this.price, this.name) {
-    count++;
+  String get size => _size;
+
+  // legacy
+  void setSize(String size) {
+    _size = size;
+  }
+
+  set size(String value) {
+    _size = value;
+  }
+
+  Pizza(this._size, this._price) {
+    _count++;
   }
 
   void printPizza() {
-    print('Pizza $name, size $size, price $price');
+    print('size $_size, price $_price');
   }
 
+  // legacy
+  double getPrice() {
+    return _price;
+  }
 
-  static int count = 0;
+  double get price => _price;
+
+  @override
+  String toString() {
+    return '${runtimeType.toString()} size $_size, price $_price';
+  }
+
+  static int _count = 0;
+
+  static int get count => _count;
+
+  static void addPizza() => _count++;
 }
